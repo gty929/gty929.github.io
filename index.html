@@ -1,428 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tianyao Gu — PhD Student, Carnegie Mellon University</title>
-  <meta name="description" content="Personal academic website for a PhD student at Carnegie Mellon University: research, publications, teaching, service, and contact." />
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Tianyao Gu — PhD Student, Carnegie Mellon University" />
-  <meta property="og:description" content="Research, publications, teaching, and contact." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Color Theme Variables -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tianyao Gu | Carnegie Mellon University</title>
   <style>
-    :root{
-      /* Accent uses CMU red by default — tweak to your taste */
-      --accent: #A6192E;
-      --accent-600: #8f1627;
-      --bg: #0b0e14;
-      --panel: #101522;
-      --text: #eaeef5;
-      --muted: #b8c0cf;
-      --ring: rgba(166,25,46,0.25);
-      --shadow: 0 10px 25px rgba(0,0,0,.25);
-      --radius: 16px;
-      --maxw: 980px;
-    }
-
-    /* Light theme (default), overridden by prefers-color-scheme below */
-    :root{
-      --bg: #fbfbfc;
-      --panel: #ffffff;
-      --text: #101625;
-      --muted: #5a6474;
-      --shadow: 0 10px 25px rgba(16,22,37,.08);
-      --ring: rgba(166,25,46,0.20);
-    }
-
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg: #0b0e14;
-        --panel: #101522;
-        --text: #eaeef5;
-        --muted: #b8c0cf;
-        --shadow: 0 10px 30px rgba(0,0,0,.35);
-      }
-    }
-
-    /* Base reset & typography */
-    *{ box-sizing: border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0; font: 16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
-      color: var(--text); background: radial-gradient(1200px 800px at 100% -10%, rgba(166,25,46,.06), transparent 60%), var(--bg);
-      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-    }
-    a{ color: var(--accent); text-decoration: none; }
-    a:hover{ text-decoration: underline; }
-    img{ max-width: 100%; display: block; }
-    .container{ max-width: var(--maxw); margin: 0 auto; padding: 24px; }
-
-    /* Header & Nav */
-    header{ position: sticky; top: 0; z-index: 30; backdrop-filter: saturate(1.2) blur(8px); background: color-mix(in oklab, var(--bg) 85%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--muted) 25%, transparent); }
-    .nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
-    .brand{ display:flex; align-items:center; gap:12px; }
-    .brand .dot{ width:12px; height:12px; border-radius:50%; background: var(--accent); box-shadow: 0 0 0 6px var(--ring); }
-    .brand h1{ font-size: 18px; margin:0; letter-spacing:.2px; }
-    .brand .sub{ color: var(--muted); font-size: 12px; }
-    .menu{ display:flex; gap:16px; align-items:center; }
-    .menu a{ padding:8px 10px; border-radius: 12px; }
-    .menu a:hover{ background: color-mix(in oklab, var(--accent) 12%, transparent); text-decoration:none; }
-    .menu .cv{ border:1px solid color-mix(in oklab, var(--accent) 40%, transparent); padding:8px 12px; }
-
-    /* Mobile nav */
-    .burger{ display:none; border:1px solid color-mix(in oklab, var(--muted) 40%, transparent); padding:8px 10px; border-radius:12px; background:var(--panel); }
-    @media (max-width: 760px){
-      .menu{ display:none; }
-      .burger{ display:block; }
-      #mobileMenu{ display:none; position: fixed; inset: 64px 16px auto 16px; background: var(--panel); border:1px solid color-mix(in oklab, var(--muted) 40%, transparent); border-radius: 16px; box-shadow: var(--shadow); padding: 12px; }
-      #mobileMenu a{ display:block; padding:12px; border-radius:12px; }
-      #mobileMenu a:hover{ background: color-mix(in oklab, var(--accent) 12%, transparent); text-decoration:none; }
-    }
-
-    /* Hero */
-    .hero{ display:grid; grid-template-columns: 1.2fr .8fr; gap:28px; align-items:center; padding: 36px 0 16px; }
-    .card{ background: var(--panel); border: 1px solid color-mix(in oklab, var(--muted) 35%, transparent); border-radius: var(--radius); box-shadow: var(--shadow); }
-    .hero .intro{ padding:24px; }
-    .eyebrow{ display:inline-flex; align-items:center; gap:8px; font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.14em; }
-    .eyebrow .pill{ background: color-mix(in oklab, var(--accent) 14%, transparent); color: var(--accent-600); border:1px solid color-mix(in oklab, var(--accent) 40%, transparent); padding: 4px 8px; border-radius:999px; }
-    .intro h2{ font-size: clamp(24px, 4vw, 40px); line-height:1.12; margin: 10px 0 12px; }
-    .intro p{ font-size: 18px; margin: 0 0 16px; color: var(--muted); }
-    .quick{ display:flex; gap:12px; flex-wrap:wrap; }
-    .quick a{ display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; background: color-mix(in oklab, var(--accent) 10%, transparent); border:1px solid color-mix(in oklab, var(--accent) 40%, transparent); }
-
-    .portrait{ padding: 8px; }
-    .portrait .frame{ aspect-ratio: 1 / 1; border-radius: calc(var(--radius) + 8px); overflow: hidden; position: relative; background: linear-gradient(135deg, color-mix(in oklab, var(--accent) 25%, transparent), transparent); }
-    .portrait img{ width:100%; height:100%; object-fit: cover; filter: saturate(1.05) contrast(1.05); }
-
-    @media (max-width: 900px){ .hero{ grid-template-columns: 1fr; } }
-
-    /* Section headings */
-    section{ padding: 28px 0; }
-    .section-title{ display:flex; align-items:center; justify-content:space-between; margin: 0 0 14px; }
-    .section-title h3{ margin:0; font-size: 22px; }
-    .section-title .bar{ height: 1px; background: color-mix(in oklab, var(--muted) 40%, transparent); flex:1; margin-left: 12px; border-radius: 10px; }
-
-    /* Research interests */
-    .chips{ display:flex; gap:10px; flex-wrap:wrap; }
-    .chip{ background: color-mix(in oklab, var(--accent) 10%, transparent); border:1px solid color-mix(in oklab, var(--accent) 40%, transparent); color: var(--accent-600); padding: 6px 10px; border-radius: 999px; font-size: 13px; }
-
-    /* Publications */
-    .pub-controls{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom: 10px; }
-    .btn{ border:1px solid color-mix(in oklab, var(--muted) 40%, transparent); background: var(--panel); padding:8px 10px; border-radius: 12px; cursor: pointer; }
-    .btn[aria-pressed="true"]{ border-color: color-mix(in oklab, var(--accent) 50%, transparent); box-shadow: 0 0 0 3px var(--ring); }
-    .pub-list{ display:grid; grid-template-columns: 1fr; gap:12px; }
-    .pub{ padding:16px; border-radius: 16px; border:1px solid color-mix(in oklab, var(--muted) 35%, transparent); background: var(--panel); display:grid; gap:8px; }
-    .pub .title{ font-weight:600; }
-    .pub .meta{ color: var(--muted); font-size: 14px; }
-    .pub .actions{ display:flex; gap:10px; flex-wrap:wrap; }
-    .tag{ font-size: 12px; padding:4px 8px; border-radius: 999px; border:1px solid color-mix(in oklab, var(--muted) 35%, transparent); color: var(--muted); }
-
-    /* Teaching cards */
-    .grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; }
-    @media (max-width: 960px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 620px){ .grid{ grid-template-columns: 1fr; } }
-    .course{ padding:16px; border:1px solid color-mix(in oklab, var(--muted) 35%, transparent); border-radius:16px; background: var(--panel); }
-    .course .term{ font-size:12px; color:var(--muted); }
-
-    /* Footer */
-    footer{ margin-top: 28px; padding: 28px 0 40px; color: var(--muted); }
-    .socials{ display:flex; gap:10px; flex-wrap:wrap; }
-    .socials a{ display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border:1px solid color-mix(in oklab, var(--muted) 35%, transparent); border-radius:12px; background: var(--panel); }
-
-    /* Dark-mode toggle switch */
-    .switch{ position:relative; width: 52px; height: 28px; border-radius:999px; background: color-mix(in oklab, var(--muted) 30%, transparent); border:1px solid color-mix(in oklab, var(--muted) 45%, transparent); cursor:pointer; display:inline-flex; align-items:center; padding:4px; }
-    .knob{ width: 20px; height: 20px; border-radius:50%; background: var(--panel); border:1px solid color-mix(in oklab, var(--muted) 45%, transparent); transition: transform .25s ease; }
-    .switch[aria-checked="true"] .knob{ transform: translateX(24px); }
-
-    /* Print styles (for CV / clean printing) */
-    @media print{
-      header, .quick, .pub-controls, .socials, .switch, #mobileMenu { display:none !important; }
-      .card, .course, .pub { box-shadow:none; }
-      .container{ max-width: 700px; }
+    :root { --cmu: #800000; --ink:#333; --muted:#666; --bg:#f9f9f9; }
+    *{box-sizing:border-box}
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+    header { background: var(--cmu); color: #fff; padding: 2rem 1rem; text-align: center; }
+    header img { width: 150px; height: 150px; border-radius: 50%; margin-bottom: 1rem; object-fit: cover; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+    header h1 { margin: .5rem 0 0; font-size: clamp(1.8rem, 2.4vw + 1rem, 2.6rem); }
+    header p { margin: .2rem 0; opacity: .95; }
+    nav { position: sticky; top: 0; z-index: 20; background: #fff; border-bottom: 1px solid #eaeaea; }
+    nav .wrap { max-width: 900px; margin: 0 auto; padding: .6rem 1rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap }
+    nav a { padding: .25rem .5rem; text-decoration: none; color: var(--cmu); font-weight: 700; border-radius: .375rem; }
+    nav a:hover { background: rgba(128,0,0,.08); }
+    main { max-width: 900px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+    section { margin: 2rem 0; }
+    h2 { color: var(--cmu); border-bottom: 2px solid var(--cmu); padding-bottom: .35rem; margin-bottom: 1rem; }
+    .item { margin: 1rem 0; }
+    .where { font-weight: 700; }
+    .when, .meta, .authors { color: var(--muted); }
+    ul.tight { line-height: 1.6; margin: .25rem 0 .25rem 1.25rem; }
+    .pill { display:inline-block; padding:.2rem .5rem; border:1px solid #ddd; border-radius:999px; font-size:.85rem; color:#444; }
+    footer { text-align: center; padding: 2rem 1rem; background: #fff; border-top: 1px solid #eee; margin-top: 2rem; color: var(--muted); }
+    @media (prefers-color-scheme: dark) {
+      :root{ --bg:#0b0b0b; --ink:#eaeaea; --muted:#bdbdbd; }
+      header{ background:#5a0000 }
+      nav{ background:#121212; border-color:#1f1f1f }
+      nav a:hover{ background: rgba(255,255,255,.06); }
+      footer{ background:#121212; border-color:#1f1f1f }
     }
   </style>
-
-  <!-- Schema.org Person JSON-LD (update fields!) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Tianyao Gu",
-    "affiliation": {"@type":"CollegeOrUniversity","name":"Carnegie Mellon University"},
-    "jobTitle": "PhD Student",
-    "email": "mailto:tianyao@example.edu",
-    "url": "https://example.com",
-    "sameAs": [
-      "https://scholar.google.com/citations?user=XXXX",
-      "https://github.com/yourhandle",
-      "https://twitter.com/yourhandle"
-    ]
-  }
-  </script>
 </head>
 <body>
   <header>
-    <div class="container nav">
-      <a class="brand" href="#top">
-        <span class="dot" aria-hidden></span>
-        <div>
-          <h1>Tianyao Gu</h1>
-          <div class="sub">PhD Student · Carnegie Mellon University</div>
-        </div>
-      </a>
-      <nav class="menu" aria-label="Main">
-        <a href="#about">About</a>
-        <a href="#publications">Publications</a>
-        <a href="#teaching">Teaching</a>
-        <a href="#talks">Talks</a>
-        <a href="#service">Service</a>
-        <a class="cv" href="#" download>CV</a>
-        <button id="themeToggle" class="btn" aria-pressed="false" title="Toggle theme"><span aria-hidden>🌓</span> Theme</button>
-      </nav>
-      <button class="burger" id="burger" aria-label="Open menu">☰</button>
-    </div>
-    <div id="mobileMenu" class="container card">
-      <a href="#about" onclick="toggleMobile(false)">About</a>
-      <a href="#publications" onclick="toggleMobile(false)">Publications</a>
-      <a href="#teaching" onclick="toggleMobile(false)">Teaching</a>
-      <a href="#talks" onclick="toggleMobile(false)">Talks</a>
-      <a href="#service" onclick="toggleMobile(false)">Service</a>
-      <a class="cv" href="#" download onclick="toggleMobile(false)">CV</a>
-      <a href="#contact" onclick="toggleMobile(false)">Contact</a>
-      <button id="themeToggleMobile" class="btn" aria-pressed="false">🌓 Theme</button>
-    </div>
+    <img src="portrait.jpg" alt="Portrait of Tianyao Gu">
+    <h1>Tianyao Gu</h1>
+    <p>First-year Ph.D. Student, Electrical & Computer Engineering</p>
+    <p>Carnegie Mellon University</p>
+    <p>Advised by Prof. Elaine Shi</p>
   </header>
 
-  <main class="container" id="top">
-    <!-- Hero / Intro -->
-    <section class="hero" aria-labelledby="intro-title">
-      <div class="intro card">
-        <div class="eyebrow">
-          <span class="pill">CMU · CyLab</span>
-          <span>Computer Science · Security · Cryptography</span>
-        </div>
-        <h2 id="intro-title">Hi, I’m Tianyao — I build fast privacy-preserving systems.</h2>
-        <p>
-          I’m a PhD student at <strong>Carnegie Mellon University</strong> advised by <a href="#">Prof. Your Advisor</a> in the <a href="#">Cryptography</a> and <a href="#">Systems Security</a> groups. My research focuses on <em>oblivious computation</em>, including Garbled RAM, ORAM, and enclave-friendly protocols.
-        </p>
-        <div class="quick">
-          <a href="#publications" aria-label="Jump to publications">📚 Publications</a>
-          <a href="#teaching">🧑‍🏫 Teaching</a>
-          <a href="#talks">🎤 Talks</a>
-          <a href="#contact">✉️ Contact</a>
-          <a href="#" download>⬇️ CV</a>
-        </div>
-      </div>
-      <div class="portrait card" aria-label="Profile photo">
-        <div class="frame">
-          <!-- Replace with your own image path -->
-          <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=800&auto=format&fit=crop" alt="Portrait of Tianyao Gu"/>
-        </div>
-      </div>
-    </section>
+  <nav>
+    <div class="wrap">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-    <!-- About -->
+  <main>
     <section id="about">
-      <div class="section-title"><h3>About</h3><div class="bar"></div></div>
-      <div class="card" style="padding:16px">
-        <p>
-          My work bridges cryptographic theory and practical systems. I like turning asymptotically optimal
-          ideas into <em>real</em> libraries and benchmarks. Lately, I’ve been exploring oblivious sorting/shuffling,
-          secure RAM, and SIMD-friendly garbling.
-        </p>
-        <div class="chips" aria-label="Research interests">
-          <span class="chip">Garbled RAM</span>
-          <span class="chip">Oblivious Data Structures</span>
-          <span class="chip">Trusted Execution</span>
-          <span class="chip">Formal Security</span>
-          <span class="chip">High-performance C++/Rust</span>
-        </div>
+      <h2>About</h2>
+      <p>I am a first-year Ph.D. student in the Electrical &amp; Computer Engineering Department at Carnegie Mellon University, advised by Prof. Elaine Shi. My research interests include cryptography, secure computation (Garbled RAM, ORAM), and privacy-preserving systems.</p>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="item">
+        <div class="where">Carnegie Mellon University</div>
+        <div>Ph.D. in Electrical &amp; Computer Engineering <span class="when">(Jan. 2025 – Present)</span></div>
+      </div>
+      <div class="item">
+        <div class="where">Carnegie Mellon University</div>
+        <div>M.S. in Electrical &amp; Computer Engineering <span class="when">(Aug. 2022 – Dec. 2023)</span></div>
+        <div class="meta">GPA: 4.00/4 — CyLab research assistant; TA for “Foundations of Blockchains.”</div>
+      </div>
+      <div class="item">
+        <div class="where">University of Michigan, Ann Arbor</div>
+        <div>B.S.E. in Computer Science; Minor in Mathematics <span class="when">(Aug. 2020 – Apr. 2022)</span></div>
+        <div class="meta">GPA: 3.98/4 — Roger King Scholarship; James B. Angell Scholar; University Honors; Dean’s List.</div>
+      </div>
+      <div class="item">
+        <div class="where">Shanghai Jiao Tong University</div>
+        <div>B.S. in Electrical &amp; Computer Engineering; Minor in Global China Studies <span class="when">(Sep. 2018 – Aug. 2022)</span></div>
+        <div class="meta">GPA: 3.84/4 — Outstanding Graduate; Undergraduate Excellent Scholarship (2018–2020).</div>
       </div>
     </section>
 
-    <!-- Publications -->
+    <!-- Publications now BEFORE Experience -->
     <section id="publications">
-      <div class="section-title"><h3>Publications</h3><div class="bar"></div></div>
-      <div class="pub-controls" role="toolbar" aria-label="Filter publications">
-        <button class="btn" data-filter="all" aria-pressed="true">All</button>
-        <button class="btn" data-filter="conference">Conference</button>
-        <button class="btn" data-filter="journal">Journal</button>
-        <button class="btn" data-filter="preprint">Preprint</button>
+      <h2>Publications</h2>
+      <div class="item">
+        <div><strong>PicoGRAM: Practical Garbled RAM from Decisional Diffie-Hellman</strong> <a class="pill" href="https://eprint.iacr.org/2025/1479" target="_blank" rel="noopener">ePrint</a></div>
+        <div class="meta"><em>CRYPTO 2025</em>, Santa Barbara, CA — Aug. 2025</div>
+        <div class="authors"><strong>Tianyao Gu</strong>, Afonso Tinoco, Sri Harish G Rajan, Elaine Shi</div>
       </div>
-      <div class="pub-list" id="pubList">
-        <!-- Duplicate this block per publication; update data-type and links -->
-        <article class="pub" data-type="conference">
-          <div class="title">PicoGRAM: Practical Garbled RAM from DDH with SIMD-Friendly Garbling</div>
-          <div class="meta">T. Gu, A. Coauthor, B. Coauthor — <strong>CRYPTO 2025</strong> (to appear)</div>
-          <div class="actions">
-            <a class="tag" href="#">PDF</a>
-            <a class="tag" href="#">Code</a>
-            <button class="tag" onclick="copyBib(this)" aria-label="Copy BibTeX">BibTeX</button>
-          </div>
-        </article>
-        <article class="pub" data-type="preprint">
-          <div class="title">\nameshort: An Asymptotically Optimal Oblivious Sorting Algorithm</div>
-          <div class="meta">T. Gu, C. Collaborator — arXiv 2025</div>
-          <div class="actions">
-            <a class="tag" href="#">arXiv</a>
-            <button class="tag" onclick="copyBib(this)">BibTeX</button>
-          </div>
-        </article>
-        <article class="pub" data-type="journal">
-          <div class="title">Secure Key-Value Stores with ORAM in TEEs</div>
-          <div class="meta">T. Gu, D. Collaborator — Journal of Systems Security, 2024</div>
-          <div class="actions">
-            <a class="tag" href="#">PDF</a>
-            <a class="tag" href="#">Project</a>
-            <button class="tag" onclick="copyBib(this)">BibTeX</button>
-          </div>
-        </article>
+      <div class="item">
+        <div><strong>Flexway O-Sort: Enclave-Friendly and Optimal Oblivious Sorting</strong> <a class="pill" href="https://eprint.iacr.org/2023/1258.pdf" target="_blank" rel="noopener">ePrint</a></div>
+        <div class="meta"><em>USENIX Security '25</em>, Seattle, WA — Aug. 2025</div>
+        <div class="authors"><strong>Tianyao Gu</strong>, Yilei Wang, Afonso Tinoco, Bingnan Chen, Ke Yi, Elaine Shi</div>
       </div>
     </section>
 
-    <!-- Teaching -->
-    <section id="teaching">
-      <div class="section-title"><h3>Teaching</h3><div class="bar"></div></div>
-      <div class="grid">
-        <div class="course">
-          <div class="term">Spring 2025 · TA</div>
-          <div class="title">15-316: Software Foundations of Security and Privacy</div>
-          <p>Led recitations, wrote autograders, and ran project clinics.</p>
-        </div>
-        <div class="course">
-          <div class="term">Fall 2024 · Guest Lecture</div>
-          <div class="title">15-825: Advanced Cryptography</div>
-          <p>Lecture on RAM-model secure computation and oblivious data structures.</p>
-        </div>
-        <div class="course">
-          <div class="term">Spring 2024 · TA</div>
-          <div class="title">18-330: Introduction to Computer Security</div>
-          <p>Designed homework on side-channel defenses in TEEs.</p>
-        </div>
+    <section id="experience">
+      <h2>Work Experience</h2>
+      <div class="item">
+        <div class="where">Oblivious Labs Inc., Pittsburgh, PA</div>
+        <div>Co-founder, Lead Research Engineer <span class="when">(Jan. 2024 – Jan. 2025)</span></div>
+        <ul class="tight">
+          <li>Developed ORAM-based privacy-preserving libraries in C++/Rust for enclaves; &gt;20× speedup. <a href="https://github.com/obliviouslabs/oram" target="_blank" rel="noopener">GitHub</a></li>
+          <li>Built Garbled RAM (GRAM) library with constant-round 2-party RAM computation; 5.8× faster than prior work. <a href="https://github.com/picogramimpl/picogram" target="_blank" rel="noopener">GitHub</a></li>
+          <li>Created oblivious sorting library with asymptotic optimality; &gt;7.2× speedup in enclaves. <a href="https://github.com/odslib/oblsort" target="_blank" rel="noopener">GitHub</a></li>
+          <li>Collaborated with Signal (private contact discovery), Flashbots (ORAM in Ethereum), and 0xPARC (GRAM in blockchains).</li>
+        </ul>
       </div>
-    </section>
-
-    <!-- Talks -->
-    <section id="talks">
-      <div class="section-title"><h3>Talks</h3><div class="bar"></div></div>
-      <div class="card" style="padding:16px">
-        <ul>
-          <li>“PicoGRAM: Practical Garbled RAM from DDH” — <em>USENIX Security 2025</em></li>
-          <li>“Oblivious Accesses to Blockchain Data” — <em>Devcon 2024</em> (invited)</li>
+      <div class="item">
+        <div class="where">Alipay · Ant Group (Alibaba Inc.), Hangzhou, China</div>
+        <div>Full Stack Development Engineer Intern <span class="when">(May 2021 – Aug. 2021)</span></div>
+        <ul class="tight">
+          <li>Automated alarm collection/analysis/notification to enhance AI engine reliability.</li>
+          <li>Shipped data-driven features: root-cause analysis, impact estimation, emergency tracking, trend analysis.</li>
+          <li>Contributed ~17k LOC across Java/JavaScript; streamlined backend management UIs.</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="where">Shanghai Computer Software Technology Development Center</div>
+        <div>Research Assistant Intern <span class="when">(Aug. 2020 – Oct. 2020)</span></div>
+        <ul class="tight">
+          <li>Wrote reports on encryption chips, cross-chain tech, regulatory sandbox, and blockchain applications.</li>
+          <li>Contributed to the <em>2020 Shanghai Blockchain Technology and Application White Paper</em>.</li>
         </ul>
       </div>
     </section>
 
-    <!-- Service & Awards -->
-    <section id="service">
-      <div class="section-title"><h3>Service & Awards</h3><div class="bar"></div></div>
-      <div class="grid">
-        <div class="course">
-          <div class="title">Program Committee</div>
-          <p>Workshop on Privacy-Preserving Systems (2025)</p>
-        </div>
-        <div class="course">
-          <div class="title">Reviewer</div>
-          <p>IEEE S&P, CCS external reviewer</p>
-        </div>
-        <div class="course">
-          <div class="title">Awards</div>
-          <p>Best Student Paper Award (Example), CMU Fellowship</p>
-        </div>
-      </div>
+    <section id="skills">
+      <h2>Skills</h2>
+      <p><strong>Programming Languages:</strong> C/C++, Python, Rust, Go, Java, Kotlin, JavaScript, Dafny, MySQL, OCaml</p>
+      <p><strong>Frameworks &amp; Tools:</strong> Spring, React.js, Kubernetes, Git, Bash</p>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
-      <div class="section-title"><h3>Contact</h3><div class="bar"></div></div>
-      <div class="card" style="padding:16px">
-        <p>Email: <a href="mailto:tianyao@example.edu">tianyao@example.edu</a></p>
-        <div class="socials" aria-label="Social links">
-          <a href="https://scholar.google.com/citations?user=XXXX" target="_blank" rel="noopener">Google Scholar</a>
-          <a href="https://github.com/yourhandle" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://x.com/yourhandle" target="_blank" rel="noopener">X (Twitter)</a>
-          <a href="https://www.linkedin.com/in/yourhandle" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-      </div>
+      <h2>Contact</h2>
+      <p><strong>Phone:</strong> 734-450-8669</p>
+      <p><strong>Email:</strong> <a href="mailto:gty0929@gmail.com">gty0929@gmail.com</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/tianyao-gu/" target="_blank" rel="noopener">linkedin.com/in/tianyao-gu</a></p>
     </section>
-
-    <footer>
-      <div class="container">
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-          <div>© <span id="year"></span> Tianyao Gu. Made with ❤️ and vanilla CSS.</div>
-          <div>
-            <button id="themeSwitch" class="switch" role="switch" aria-checked="false" title="Toggle dark mode"><span class="knob"></span></button>
-          </div>
-        </div>
-      </div>
-    </footer>
   </main>
 
-  <!-- Minimal JS for filtering, theme toggling, mobile nav, and copy BibTeX -->
-  <script>
-    const $ = (sel, ctx=document) => ctx.querySelector(sel);
-    const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
-
-    // Year
-    $('#year').textContent = new Date().getFullYear();
-
-    // Mobile menu
-    const mobile = $('#mobileMenu');
-    const burger = $('#burger');
-    function toggleMobile(force){ mobile.style.display = (force === false) ? 'none' : (mobile.style.display==='block'?'none':'block'); }
-    burger?.addEventListener('click', () => toggleMobile());
-
-    // Publications filter
-    const filters = $$('.pub-controls .btn');
-    const pubs = $$('#pubList .pub');
-    filters.forEach(btn => btn.addEventListener('click', () => {
-      filters.forEach(b => b.setAttribute('aria-pressed','false'));
-      btn.setAttribute('aria-pressed','true');
-      const f = btn.dataset.filter;
-      pubs.forEach(p => p.style.display = (f==='all' || p.dataset.type===f) ? 'grid' : 'none');
-    }));
-
-    // Theme toggle (button + footer switch). Persists to localStorage.
-    const themeKey = 'site-theme';
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const saved = localStorage.getItem(themeKey);
-    const isDark = saved ? saved === 'dark' : prefersDark;
-    document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
-
-    function applyTheme(dark){
-      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
-      localStorage.setItem(themeKey, dark ? 'dark' : 'light');
-      $('#themeToggle')?.setAttribute('aria-pressed', String(dark));
-      $('#themeToggleMobile')?.setAttribute('aria-pressed', String(dark));
-      $('#themeSwitch')?.setAttribute('aria-checked', String(dark));
-    }
-    applyTheme(isDark);
-
-    $('#themeToggle')?.addEventListener('click', () => applyTheme(document.documentElement.dataset.theme !== 'dark'));
-    $('#themeToggleMobile')?.addEventListener('click', () => { applyTheme(document.documentElement.dataset.theme !== 'dark'); toggleMobile(false); });
-    $('#themeSwitch')?.addEventListener('click', () => applyTheme(document.documentElement.dataset.theme !== 'dark'));
-
-    // Copy BibTeX (replace example with your own)
-    function copyBib(btn){
-      const bib = `@inproceedings{gu2025picogram,\n  title={PicoGRAM: Practical Garbled RAM from DDH},\n  author={Gu, Tianyao and Coauthors},\n  booktitle={CRYPTO},\n  year={2025}\n}`;
-      navigator.clipboard.writeText(bib).then(() => {
-        btn.textContent = 'Copied!';
-        setTimeout(() => btn.textContent = 'BibTeX', 1200);
-      });
-    }
-  </script>
-
-  <!-- Simple customization guide (remove before publishing)
-    1) Find-and-replace: "Tianyao Gu", email, and links.
-    2) Swap the hero image <img> src with your own portrait.
-    3) Duplicate .pub entries and fill in title/meta/links; set data-type.
-    4) Replace accent color in :root (--accent) to personalize.
-    5) Put your CV at /cv.pdf and update the CV links.
-  -->
+  <footer>
+    <p>&copy; 2025 Tianyao Gu</p>
+  </footer>
 </body>
 </html>
