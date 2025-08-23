@@ -2,53 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tianyao Gu | Carnegie Mellon University</title>
   <style>
-    :root { --cmu: #800000; --ink:#333; --muted:#666; --bg:#f9f9f9; }
+    :root{
+      --bg:#f7fafc;         /* very light gray-blue */
+      --card:#ffffff;        /* white cards */
+      --ink:#1f2937;         /* slate-800 */
+      --muted:#6b7280;       /* slate-500 */
+      --accent:#2563eb;      /* soft blue */
+      --accent-weak:#e8f0ff; /* pale blue */
+      --line:#e5e7eb;        /* gray-200 */
+    }
     *{box-sizing:border-box}
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
-    header { background: var(--cmu); color: #fff; padding: 2rem 1rem; text-align: center; }
-    header img { width: 150px; height: 150px; border-radius: 50%; margin-bottom: 1rem; object-fit: cover; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
-    header h1 { margin: .5rem 0 0; font-size: clamp(1.8rem, 2.4vw + 1rem, 2.6rem); }
-    header p { margin: .2rem 0; opacity: .95; }
-    nav { position: sticky; top: 0; z-index: 20; background: #fff; border-bottom: 1px solid #eaeaea; }
-    nav .wrap { max-width: 900px; margin: 0 auto; padding: .6rem 1rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap }
-    nav a { padding: .25rem .5rem; text-decoration: none; color: var(--cmu); font-weight: 700; border-radius: .375rem; }
-    nav a:hover { background: rgba(128,0,0,.08); }
-    main { max-width: 900px; margin: 0 auto; padding: 2rem 1rem 4rem; }
-    section { margin: 2rem 0; }
-    h2 { color: var(--cmu); border-bottom: 2px solid var(--cmu); padding-bottom: .35rem; margin-bottom: 1rem; }
-    .item { margin: 1rem 0; }
-    .where { font-weight: 700; }
-    .when, .meta, .authors { color: var(--muted); }
-    ul.tight { line-height: 1.6; margin: .25rem 0 .25rem 1.25rem; }
-    .pill { display:inline-block; padding:.2rem .5rem; border:1px solid #ddd; border-radius:999px; font-size:.85rem; color:#444; }
-    footer { text-align: center; padding: 2rem 1rem; background: #fff; border-top: 1px solid #eee; margin-top: 2rem; color: var(--muted); }
-    @media (prefers-color-scheme: dark) {
-      :root{ --bg:#0b0b0b; --ink:#eaeaea; --muted:#bdbdbd; }
-      header{ background:#5a0000 }
-      nav{ background:#121212; border-color:#1f1f1f }
-      nav a:hover{ background: rgba(255,255,255,.06); }
-      footer{ background:#121212; border-color:#1f1f1f }
+    html,body{margin:0;padding:0}
+    body{font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; background:var(--bg); color:var(--ink); line-height:1.65}
+    header{background:linear-gradient(180deg, var(--accent-weak), #ffffff 60%); padding:2.25rem 1rem 1.5rem}
+    .container{max-width:980px;margin:0 auto;padding:0 1rem}
+    .hero{display:grid;grid-template-columns:110px 1fr;gap:1rem;align-items:center}
+    .hero img{width:110px;height:110px;border-radius:999px;object-fit:cover;border:3px solid #fff;box-shadow:0 8px 28px rgba(37,99,235,.18)}
+    .hero h1{margin:.2rem 0 0;font-size:clamp(1.75rem,2.2vw+1rem,2.4rem)}
+    .sub{margin:.25rem 0;color:var(--muted)}
+    .badges{margin-top:.35rem; display:flex; flex-wrap:wrap; gap:.4rem}
+    .pill{display:inline-block;border:1px solid var(--line);background:#fff;border-radius:999px;padding:.15rem .6rem;font-size:.85rem;color:var(--muted)}
+    nav{position:sticky;top:0;z-index:30;background:#ffffffee;backdrop-filter:saturate(140%) blur(8px); border-bottom:1px solid var(--line)}
+    nav .tabs{max-width:980px;margin:0 auto;display:flex;gap:.25rem;overflow:auto;padding:.5rem 1rem}
+    nav a{color:var(--accent);font-weight:600;text-decoration:none;padding:.4rem .7rem;border-radius:.5rem}
+    nav a:hover{background:var(--accent-weak)}
+    main{max-width:980px;margin:0 auto;padding:1.25rem 1rem 3rem}
+    section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.25rem;margin:1rem 0}
+    h2{margin:.2rem 0 1rem;color:#0f172a; font-size:1.25rem}
+    .item{margin:1rem 0}
+    .row{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .where{font-weight:700}
+    .when,.meta,.authors{color:var(--muted)}
+    ul.tight{margin:.35rem 0 .25rem 1rem}
+    ul.tight li{margin:.3rem 0}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    footer{border-top:1px solid var(--line); padding:1.25rem; text-align:center; color:var(--muted)}
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#0b0f14; --card:#0f141a; --ink:#e5e7eb; --muted:#9aa4b2; --accent:#7aa2ff; --accent-weak:#1a2332; --line:#1f2937 }
+      header{background:linear-gradient(180deg, #0e1624, #0f141a 60%)}
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="portrait.jpg" alt="Portrait of Tianyao Gu">
-    <h1>Tianyao Gu</h1>
-    <p>First-year Ph.D. Student, Electrical & Computer Engineering</p>
-    <p>Carnegie Mellon University</p>
-    <p>Advised by Prof. Elaine Shi</p>
+    <div class="container">
+      <div class="hero">
+        <img src="portrait.jpg" alt="Portrait of Tianyao Gu">
+        <div>
+          <h1>Tianyao Gu</h1>
+          <div class="sub">First-year Ph.D. student, Electrical &amp; Computer Engineering, Carnegie Mellon University</div>
+          <div class="badges">
+            <span class="pill">Advised by <a href="https://www.cs.cornell.edu/~elaine/" target="_blank" rel="noopener">Elaine Shi</a></span>
+            <span class="pill">Cryptography · Secure Computation · ORAM · GRAM</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
 
   <nav>
-    <div class="wrap">
+    <div class="tabs">
       <a href="#about">About</a>
       <a href="#education">Education</a>
       <a href="#publications">Publications</a>
-      <a href="#experience">Experience</a>
+      <a href="#experience">Work Experience</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </div>
@@ -57,42 +78,64 @@
   <main>
     <section id="about">
       <h2>About</h2>
-      <p>I am a first-year Ph.D. student in the Electrical &amp; Computer Engineering Department at Carnegie Mellon University, advised by Prof. Elaine Shi. My research interests include cryptography, secure computation (Garbled RAM, ORAM), and privacy-preserving systems.</p>
+      <p>I am a first-year Ph.D. student in the Electrical &amp; Computer Engineering Department at Carnegie Mellon University, advised by Prof. Elaine Shi. My research spans cryptography and privacy-preserving systems, with a focus on Garbled RAM (GRAM), Oblivious RAM (ORAM), and efficient oblivious algorithms for hardware enclaves.</p>
     </section>
 
     <section id="education">
       <h2>Education</h2>
+
       <div class="item">
-        <div class="where">Carnegie Mellon University</div>
-        <div>Ph.D. in Electrical &amp; Computer Engineering <span class="when">(Jan. 2025 – Present)</span></div>
+        <div class="row">
+          <div class="where">Carnegie Mellon University</div>
+          <div class="when">Pittsburgh, PA · Jan. 2025 – Present</div>
+        </div>
+        <div>Ph.D. in Electrical &amp; Computer Engineering</div>
       </div>
+
       <div class="item">
-        <div class="where">Carnegie Mellon University</div>
-        <div>M.S. in Electrical &amp; Computer Engineering <span class="when">(Aug. 2022 – Dec. 2023)</span></div>
-        <div class="meta">GPA: 4.00/4 — CyLab research assistant; TA for “Foundations of Blockchains.”</div>
+        <div class="row">
+          <div class="where">Carnegie Mellon University</div>
+          <div class="when">Pittsburgh, PA · Aug. 2022 – Dec. 2023</div>
+        </div>
+        <div>M.S. in Electrical &amp; Computer Engineering</div>
+        <div class="meta">GPA: 4.00/4 — CyLab research assistant; Teaching assistant for “Foundations of Blockchains”.</div>
       </div>
+
       <div class="item">
-        <div class="where">University of Michigan, Ann Arbor</div>
-        <div>B.S.E. in Computer Science; Minor in Mathematics <span class="when">(Aug. 2020 – Apr. 2022)</span></div>
+        <div class="row">
+          <div class="where">UM–SJTU Dual Degree Program</div>
+          <div class="when"></div>
+        </div>
+        <div class="row">
+          <div><strong>University of Michigan, Ann Arbor</strong> — B.S.E. in Computer Science; Minor in Mathematics</div>
+          <div class="when">Ann Arbor, MI · Aug. 2020 – Apr. 2022</div>
+        </div>
         <div class="meta">GPA: 3.98/4 — Roger King Scholarship; James B. Angell Scholar; University Honors; Dean’s List.</div>
-      </div>
-      <div class="item">
-        <div class="where">Shanghai Jiao Tong University</div>
-        <div>B.S. in Electrical &amp; Computer Engineering; Minor in Global China Studies <span class="when">(Sep. 2018 – Aug. 2022)</span></div>
-        <div class="meta">GPA: 3.84/4 — Outstanding Graduate; Undergraduate Excellent Scholarship (2018–2020).</div>
+        <div class="row" style="margin-top:.35rem">
+          <div><strong>Shanghai Jiao Tong University</strong> — B.S. in Electrical &amp; Computer Engineering; Minor in Global China Studies</div>
+          <div class="when">Shanghai, China · Sep. 2018 – Aug. 2022</div>
+        </div>
+        <div class="meta">GPA: 3.84/4 — Outstanding Graduate; Undergraduate Excellent Scholarship (2018–2020). Research assistant (Photoacoustic Lab); TA for “Intro to Computer and Programming”.</div>
       </div>
     </section>
 
-    <!-- Publications now BEFORE Experience -->
+    <!-- Publications appear BEFORE Experience as requested -->
     <section id="publications">
       <h2>Publications</h2>
+
       <div class="item">
-        <div><strong>PicoGRAM: Practical Garbled RAM from Decisional Diffie-Hellman</strong> <a class="pill" href="https://eprint.iacr.org/2025/1479" target="_blank" rel="noopener">ePrint</a></div>
+        <div><strong>PicoGRAM: Practical Garbled RAM from Decisional Diffie-Hellman</strong>
+          <!-- ePrint link: direct eprint domain may be blocked in some environments; replace with exact ePrint URL if desired. -->
+          <a class="pill" href="https://www.iacr.org/cryptodb/data/paper.php?pubkey=35687" target="_blank" rel="noopener">IACR page</a>
+        </div>
         <div class="meta"><em>CRYPTO 2025</em>, Santa Barbara, CA — Aug. 2025</div>
         <div class="authors"><strong>Tianyao Gu</strong>, Afonso Tinoco, Sri Harish G Rajan, Elaine Shi</div>
       </div>
+
       <div class="item">
-        <div><strong>Flexway O-Sort: Enclave-Friendly and Optimal Oblivious Sorting</strong> <a class="pill" href="https://eprint.iacr.org/2023/1258.pdf" target="_blank" rel="noopener">ePrint</a></div>
+        <div><strong>Flexway O-Sort: Enclave-Friendly and Optimal Oblivious Sorting</strong>
+          <a class="pill" href="https://eprint.iacr.org/2023/1258.pdf" target="_blank" rel="noopener">ePrint</a>
+        </div>
         <div class="meta"><em>USENIX Security '25</em>, Seattle, WA — Aug. 2025</div>
         <div class="authors"><strong>Tianyao Gu</strong>, Yilei Wang, Afonso Tinoco, Bingnan Chen, Ke Yi, Elaine Shi</div>
       </div>
@@ -100,30 +143,42 @@
 
     <section id="experience">
       <h2>Work Experience</h2>
+
       <div class="item">
-        <div class="where">Oblivious Labs Inc., Pittsburgh, PA</div>
-        <div>Co-founder, Lead Research Engineer <span class="when">(Jan. 2024 – Jan. 2025)</span></div>
+        <div class="row">
+          <div class="where">Oblivious Labs Inc.</div>
+          <div class="when">Pittsburgh, PA · Jan. 2024 – Jan. 2025</div>
+        </div>
+        <div>Co-founder, Lead Research Engineer</div>
         <ul class="tight">
-          <li>Developed ORAM-based privacy-preserving libraries in C++/Rust for enclaves; &gt;20× speedup. <a href="https://github.com/obliviouslabs/oram" target="_blank" rel="noopener">GitHub</a></li>
-          <li>Built Garbled RAM (GRAM) library with constant-round 2-party RAM computation; 5.8× faster than prior work. <a href="https://github.com/picogramimpl/picogram" target="_blank" rel="noopener">GitHub</a></li>
-          <li>Created oblivious sorting library with asymptotic optimality; &gt;7.2× speedup in enclaves. <a href="https://github.com/odslib/oblsort" target="_blank" rel="noopener">GitHub</a></li>
-          <li>Collaborated with Signal (private contact discovery), Flashbots (ORAM in Ethereum), and 0xPARC (GRAM in blockchains).</li>
+          <li>Developed ORAM-based privacy-preserving key-value store libraries in C++ and Rust for hardware enclaves (<a href="https://github.com/obliviouslabs/oram" target="_blank" rel="noopener">GitHub</a>), achieving &gt;20× performance improvement over existing implementations. Presented the work as an invited speaker at Devcon 2025.</li>
+          <li>Built a Garbled RAM (GRAM) library in C++ enabling constant-round secure two-party RAM computation, outperforming prior SOTA by 5.8× (<a href="https://github.com/picogramimpl/picogram" target="_blank" rel="noopener">GitHub</a>). Related paper accepted to CRYPTO 2025.</li>
+          <li>Developed a privacy-preserving oblivious sorting library in C++ achieving asymptotic optimality and a concrete &gt;7.2× speedup over baselines in hardware enclaves (<a href="https://github.com/odslib/oblsort" target="_blank" rel="noopener">GitHub</a>). Related paper accepted to USENIX Security 2025.</li>
+          <li>Collaborated with Signal (private contact discovery), Flashbots (integrating ORAM into Ethereum applications), and 0xPARC (exploring GRAM in blockchains).</li>
         </ul>
       </div>
+
       <div class="item">
-        <div class="where">Alipay · Ant Group (Alibaba Inc.), Hangzhou, China</div>
-        <div>Full Stack Development Engineer Intern <span class="when">(May 2021 – Aug. 2021)</span></div>
+        <div class="row">
+          <div class="where">Alipay · Ant Group (Alibaba Inc.)</div>
+          <div class="when">Hangzhou, China · May 2021 – Aug. 2021</div>
+        </div>
+        <div>Full Stack Development Engineer Intern</div>
         <ul class="tight">
-          <li>Automated alarm collection/analysis/notification to enhance AI engine reliability.</li>
-          <li>Shipped data-driven features: root-cause analysis, impact estimation, emergency tracking, trend analysis.</li>
-          <li>Contributed ~17k LOC across Java/JavaScript; streamlined backend management UIs.</li>
+          <li>Developed an automated system for alarm collection, analysis, and notification, enhancing the reliability of Alipay's AI engines.</li>
+          <li>Initiated data‑driven features including root‑cause analysis, impact estimation, emergency status tracking, and trend analysis.</li>
+          <li>Optimized web and app interfaces; contributed ≈17k lines of Java/JavaScript.</li>
         </ul>
       </div>
+
       <div class="item">
-        <div class="where">Shanghai Computer Software Technology Development Center</div>
-        <div>Research Assistant Intern <span class="when">(Aug. 2020 – Oct. 2020)</span></div>
+        <div class="row">
+          <div class="where">Shanghai Computer Software Technology Development Center — Blockchain Dept.</div>
+          <div class="when">Shanghai, China · Aug. 2020 – Oct. 2020</div>
+        </div>
+        <div>Research Assistant Intern</div>
         <ul class="tight">
-          <li>Wrote reports on encryption chips, cross-chain tech, regulatory sandbox, and blockchain applications.</li>
+          <li>Produced research reports on encryption chips, cross‑chain technology, regulatory sandbox, and blockchain applications.</li>
           <li>Contributed to the <em>2020 Shanghai Blockchain Technology and Application White Paper</em>.</li>
         </ul>
       </div>
@@ -137,14 +192,16 @@
 
     <section id="contact">
       <h2>Contact</h2>
-      <p><strong>Phone:</strong> 734-450-8669</p>
+      <p><strong>Phone:</strong> 734‑450‑8669</p>
       <p><strong>Email:</strong> <a href="mailto:gty0929@gmail.com">gty0929@gmail.com</a></p>
       <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/tianyao-gu/" target="_blank" rel="noopener">linkedin.com/in/tianyao-gu</a></p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Tianyao Gu</p>
+    <div class="container">
+      © 2025 Tianyao Gu
+    </div>
   </footer>
 </body>
 </html>
